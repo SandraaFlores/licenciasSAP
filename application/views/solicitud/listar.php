@@ -39,7 +39,7 @@
 				<thead>
 				<tr>
 					<th scope="col">Id</th>
-					<th scope="col">Usuario</th>
+					<th scope="col">Solicitado por:</th>
 					<th scope="col">Fecha y hora</th>
 					<th scope="col">Mostrar</th>
 					<th scope="col">Acciones</th>

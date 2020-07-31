@@ -47,6 +47,8 @@ class SolicitudController extends CI_Controller
 			'systems_id' => $this->input->post('system'),
 		);
 
+		$this->form_validation->set_rules('system','Sistema','required|callback_check_system');
+		$this->form_validation->set_rules('types_of_user','Tipo de usuario','required|callback_check_type');
 		$this->form_validation->set_rules(validationRequests());
 
 		if ($this->form_validation->run() == FALSE) {
@@ -61,6 +63,29 @@ class SolicitudController extends CI_Controller
 				redirect('SolicitudController/cargarVistas');
 			}
 		}
+	}
+
+
+	public function check_system()
+	{
+		if ($this->input->post('system') === 'selectsystem')  {
+			$this->form_validation->set_message('check_system', 'El campo Sistema es obligatorio.');
+			return FALSE;
+		}
+		else {
+			return TRUE;
+		}
+	}
+
+	public function check_type(){
+		if ($this->input->post('types_of_user') === 'selecttype')  {
+			$this->form_validation->set_message('check_type', 'El campo Tipo de usuario es obligatorio.');
+			return FALSE;
+		}
+		else {
+			return TRUE;
+		}
+
 	}
 
 	public function getConfigPaginator($user_id, $registros_pagina, $url, $total_rows)

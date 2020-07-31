@@ -8,7 +8,7 @@ class UsuariosController extends CI_Controller
 		parent::__construct();
 		$this->load->model('UsuariosModel');
 		$this->load->library(array('form_validation', 'email', 'pagination', 'session'));
-		$this->load->helper(array('form', 'url', 'users/update_validation', 'login/login_validation'));
+		$this->load->helper(array('form', 'url','users/users_validation' ,'users/update_validation', 'login/login_validation'));
 
 	}
 
@@ -56,6 +56,8 @@ class UsuariosController extends CI_Controller
 			'levels_id' => $this->input->post('levels')
 		);
 
+		$this->form_validation->set_rules('departments','Departamento','required|callback_check_departments');
+		$this->form_validation->set_rules('levels','Nivel de usuario','required|callback_check_levels');
 		$this->form_validation->set_rules(validationUser());
 
 		if ($this->form_validation->run() == FALSE) {
@@ -69,6 +71,28 @@ class UsuariosController extends CI_Controller
 				redirect('UsuariosController/nuevo');
 			}
 		}
+	}
+
+	public function check_departments()
+	{
+		if ($this->input->post('departments') === 'selectdepartment')  {
+			$this->form_validation->set_message('check_departments', 'El campo Departamento es obligatorio.');
+			return FALSE;
+		}
+		else {
+			return TRUE;
+		}
+	}
+
+	public function check_levels(){
+		if ($this->input->post('levels') === 'selectlevel')  {
+			$this->form_validation->set_message('check_levels', 'El campo Nivel de usuario es obligatorio.');
+			return FALSE;
+		}
+		else {
+			return TRUE;
+		}
+
 	}
 
 	public function delete()
@@ -136,7 +160,8 @@ class UsuariosController extends CI_Controller
 			'departments_id' => $this->input->post('departments'),
 			'levels_id' => $this->input->post('levels')
 		);
-
+		$this->form_validation->set_rules('departments','Departamento','required|callback_check_departments2');
+		$this->form_validation->set_rules('levels','Nivel de usuario','required|callback_check_levels2');
 		$this->form_validation->set_rules(updateValidationUser());
 
 		if ($this->form_validation->run() == FALSE) {
@@ -147,11 +172,30 @@ class UsuariosController extends CI_Controller
 			} else {
 				$this->UsuariosModel->edit($id2, $data);
 				redirect('UsuariosController/listar');
-
-
 			}
 		}
 
+	}
+
+	public function check_departments2()
+	{
+		if ($this->input->post('departments') === 'selectdepartment2')  {
+			$this->form_validation->set_message('check_departments2', 'El campo Departamento es obligatorio.');
+			return FALSE;
+		}
+		else {
+			return TRUE;
+		}
+	}
+
+	public function check_levels2(){
+		if ($this->input->post('levels') === 'selectlevel2')  {
+			$this->form_validation->set_message('check_levels2', 'El campo Nivel de usuario es obligatorio.');
+			return FALSE;
+		}
+		else {
+			return TRUE;
+		}
 
 	}
 

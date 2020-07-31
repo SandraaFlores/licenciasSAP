@@ -29,20 +29,9 @@ if (!function_exists('updateValidationUser')) {
 				'rules' => 'required|min_length[8]|max_length[255]',
 			),
 			array(
-				'field' => 'departments',
-				'label' => 'Departamento',
-				'rules' => 'required',
-			),
-			array(
 				'field' => 'role',
 				'label' => 'Función del usuario',
 				'rules' => 'required|min_length[1]|max_length[255]',
-			),
-			array(
-				'field' => 'levels',
-				'label' => 'Nivel de usuario',
-				'rules' => 'required',
-
 			)
 		);
 	}

@@ -101,7 +101,7 @@ $conexion = mysqli_connect('localhost', 'root', '', 'licencias');
 								   for="departments">Departamento:</label>
 							<select id="departments" name="departments"
 									class="form-control col-lg-3 <?php echo empty(form_error('departments')) ? "" : "is-invalid"; ?>" >
-								<option value="">Seleccione una opción:</option>
+								<option value="selectdepartment">Seleccione una opción:</option>
 								<?php
 								$sql = "SELECT * FROM departments";
 								$query = $conexion->query($sql);
@@ -131,7 +131,7 @@ $conexion = mysqli_connect('localhost', 'root', '', 'licencias');
 								   for="levels">Nivel de usuario:</label>
 							<select id="levels" name="levels"
 									class="form-control col-lg-3 <?php echo empty(form_error('levels')) ? "" : "is-invalid"; ?>" >
-								<option value="">Seleccione una opción:</option>
+								<option value="selectlevel">Seleccione una opción:</option>
 								<?php
 								$sql = "SELECT * FROM levels";
 								$query = $conexion->query($sql);

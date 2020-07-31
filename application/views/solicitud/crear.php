@@ -49,7 +49,7 @@ $conexion = mysqli_connect('localhost', 'root', '', 'licencias');
 							<select id="system" name="system"
 									class="form-control col-lg-3 <?php echo empty(form_error('system')) ? "" : "is-invalid"; ?>"
 									autofocus>
-								<option value="0">Selecciona una opción:</option>
+								<option value="selectsystem">Selecciona una opción:</option>
 								<?php
 								$sql = "SELECT * FROM systems";
 								$query = $conexion->query($sql);
@@ -92,7 +92,7 @@ $conexion = mysqli_connect('localhost', 'root', '', 'licencias');
 							<label class="col-lg-2 col-form-label form-control-label" for="types_of_user">Tipo de
 								usuario:</label>
 							<select id="types_of_user" name="types_of_user" class="form-control col-lg-3 <?php echo empty(form_error('types_of_user')) ? "" : "is-invalid"; ?>">
-								<option value="0">Selecciona una opción:</option>
+								<option value="selecttype">Selecciona una opción:</option>
 								<?php
 								$sql = "SELECT * FROM types_of_users";
 								$query = $conexion->query($sql);
