@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,10 @@
 </head>
 
 <body>
+<div class="form-error">
+	<?php validation_errors(); ?>
+</div>
+<?php echo form_open('UsuariosController/verifica'); ?>
 <div class="container">
 	<div class="row pt-4">
 		<div class="col-sm-6 mx-auto">
@@ -21,16 +26,25 @@
 					</h5>
 				</div>
 				<div class="card-body" style="padding: 10px">
-					<form method="post" action="<?= base_url() . "UsuariosController/verifica"; ?>">
+					<form class="needs-validation" method="post"
+						  action="<?= base_url("UsuariosController/verifica"); ?>" novalidate>
 						<div class="form-group row mx-0">
-							<label class="col-lg-3 col-form-label form-control-label" for="name">Usuario:</label>
-							<input type="text" class="form-control col-lg-6" placeholder="Usuario" id="user" name='user'
-								   required autofocus>
+							<label class="col-lg-3 col-form-label form-control-label" for="user">Usuario:</label>
+							<input type="text"
+								   class="form-control col-lg-6 <?php echo empty(form_error('user')) ? "" : "is-invalid"; ?>"
+								   value="<?php echo set_value('user'); ?>"
+								   placeholder="Usuario" id="user" name='user'
+								   autofocus>
+							<div class="invalid-feedback"><?php echo form_error('user'); ?></div>
 						</div>
+
 						<div class="form-group row mx-0">
 							<label class="col-lg-3 col-form-label form-control-label" for="password">Contraseña:</label>
-							<input type="password" class="form-control col-lg-6" placeholder="Contraseña"
-								   name="password" required>
+							<input type="password"
+								   class="form-control col-lg-6 <?php echo empty(form_error('password')) ? "" : "is-invalid"; ?>"
+								   placeholder="Contraseña"
+								   name="password" value="<?php echo set_value('password'); ?>">
+							<div class="invalid-feedback"><?php echo form_error('password'); ?></div>
 						</div>
 						<div class="button form-group">
 							<div class="center">

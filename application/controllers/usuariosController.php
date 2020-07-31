@@ -8,7 +8,7 @@ class UsuariosController extends CI_Controller
 		parent::__construct();
 		$this->load->model('UsuariosModel');
 		$this->load->library(array('form_validation', 'email', 'pagination', 'session'));
-		$this->load->helper(array('form', 'url', 'users/users_validation'));
+		$this->load->helper(array('form', 'url', 'users/update_validation', 'login/login_validation'));
 
 	}
 
@@ -23,6 +23,14 @@ class UsuariosController extends CI_Controller
 		$this->load->view('usuarios/crear');
 		$success = $this->session->flashdata("success");
 		$this->load->view('templates/footer', array('success' => $success));
+
+	}
+
+	public function inicio()
+	{
+		$this->load->view('login/login');
+		$error = $this->session->flashdata("error");
+		$this->load->view('templates/footer', array('error' => $error));
 
 	}
 
@@ -77,17 +85,24 @@ class UsuariosController extends CI_Controller
 		}
 	}
 
-	//Login
 	public function verifica()
 	{
 		$user = $this->input->post('user');
 		$password = $this->input->post('password');
 
-		if ($this->UsuariosModel->login($user, $password))
-			redirect('InicioController');
-		else {
-			redirect('/login');
+		$this->form_validation->set_rules(loginValidation());
+
+		if ($this->form_validation->run() == FALSE) {
+			$this->inicio();
+		} else {
+			if ($this->UsuariosModel->login($user, $password))
+				redirect('InicioController');
+			else {
+				$this->session->set_flashdata("error", true);
+				$this->inicio();
+			}
 		}
+
 	}
 
 	public function logout()
@@ -96,6 +111,7 @@ class UsuariosController extends CI_Controller
 		$this->session->sess_destroy();
 		redirect('/login');
 	}
+
 	public function update($id = 0)
 	{
 		$this->load->view('templates/header');
@@ -121,7 +137,7 @@ class UsuariosController extends CI_Controller
 			'levels_id' => $this->input->post('levels')
 		);
 
-		$this->form_validation->set_rules(validationUser());
+		$this->form_validation->set_rules(updateValidationUser());
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->update($id2);
@@ -141,4 +157,3 @@ class UsuariosController extends CI_Controller
 
 }
 
-?>

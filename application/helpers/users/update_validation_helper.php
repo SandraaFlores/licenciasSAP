@@ -1,6 +1,6 @@
 <?php
-if (!function_exists('validationUser')) {
-	function validationUser()
+if (!function_exists('updateValidationUser')) {
+	function updateValidationUser()
 	{
 		return array(
 			array(
@@ -17,7 +17,7 @@ if (!function_exists('validationUser')) {
 				'field' => 'last_name',
 				'label' => 'Segundo apellido',
 				'rules' => 'required|min_length[1]|max_length[255]',
-				),
+			),
 			array(
 				'field' => 'user',
 				'label' => 'Usuario',
@@ -31,10 +31,7 @@ if (!function_exists('validationUser')) {
 			array(
 				'field' => 'departments',
 				'label' => 'Departamento',
-				'rules' => 'required|multiple_select',
-				'errors' => array(
-					'multiple_select' => 'El campo %s es obligatorio.'
-				),
+				'rules' => 'required',
 			),
 			array(
 				'field' => 'role',
@@ -44,10 +41,8 @@ if (!function_exists('validationUser')) {
 			array(
 				'field' => 'levels',
 				'label' => 'Nivel de usuario',
-				'rules' => 'required|multiple_select',
-				'errors' => array(
-					'multiple_select' => 'El campo %s es obligatorio.'
-				),
+				'rules' => 'required',
+
 			)
 		);
 	}

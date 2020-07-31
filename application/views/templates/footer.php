@@ -4,6 +4,9 @@
 <?php if(isset($success) && $success){?>
 	<script src="<?= base_url('assets/js/dashboard/correcto.js') ?>"></script>
 <?php } ?>
+<?php if(isset($error) && $error){?>
+	<script src="<?= base_url('assets/js/dashboard/login_error.js') ?>"></script>
+<?php } ?>
 <script src="<?= base_url('assets/js/dashboard/show_users.js') ?>"></script>
 <script src="<?= base_url('assets/js/dashboard/modal.js') ?>"></script>
 <script src="<?= base_url('assets/js/dashboard/validation.js') ?>"></script>

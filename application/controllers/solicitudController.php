@@ -7,9 +7,9 @@ class SolicitudController extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->helper("url");
+		$this->load->helper(array('form', 'url', 'requests/requests_validation'));
 		$this->load->model("SolicitudModel");
-		$this->load->library(array('form_validation', 'email', 'pagination'));
+		$this->load->library(array('form_validation', 'email', 'pagination', 'session'));
 
 
 	}
@@ -46,13 +46,20 @@ class SolicitudController extends CI_Controller
 			'types_of_users_id' => $this->input->post('types_of_user'),
 			'systems_id' => $this->input->post('system'),
 		);
-		if (empty($data)) {
-			$this->output->set_status_header(400);
+
+		$this->form_validation->set_rules(validationRequests());
+
+		if ($this->form_validation->run() == FALSE) {
+			$this->cargarVistas();
 		} else {
-			$this->SolicitudModel->save($data);
-			$this->session->set_flashdata("success", true);
-			$this->sendEmail();
-			redirect('SolicitudController/cargarVistas');
+			if (empty($data)) {
+				$this->output->set_status_header(400);
+			} else {
+				$this->SolicitudModel->save($data);
+				$this->session->set_flashdata("success", true);
+				$this->sendEmail();
+				redirect('SolicitudController/cargarVistas');
+			}
 		}
 	}
 

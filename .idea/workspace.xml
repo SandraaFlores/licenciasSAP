@@ -2,18 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d58c4e97-46ae-4f57-ae3e-c090b45ced96" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/js/dashboard/validation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/helpers/login/login_validation_helper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/helpers/requests/requests_validation_helper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/helpers/users/update_validation_helper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/dashboard/login_error.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/config/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/autoload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/InicioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/InicioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/solicitudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/solicitudController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/controllers/usuariosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/usuariosController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/helpers/users/users_validation_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/helpers/users/users_validation_helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/usuariosModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/usuariosModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/login/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/solicitud/crear.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/solicitud/crear.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/views/templates/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/templates/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/templates/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/templates/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/usuarios/actualizar.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/usuarios/actualizar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/views/usuarios/crear.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/usuarios/crear.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/usuarios/listar.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/usuarios/listar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/dashboard/correcto.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/dashboard/correcto.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -133,7 +134,7 @@
       <workItem from="1595982150007" duration="16900000" />
       <workItem from="1596090090748" duration="32545000" />
       <workItem from="1596180981693" duration="5498000" />
-      <workItem from="1596188669983" duration="3359000" />
+      <workItem from="1596188669983" duration="17056000" />
     </task>
     <task id="LOCAL-00001" summary="templates">
       <created>1593568167130</created>
@@ -205,7 +206,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594516244020</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Validated Users">
+      <created>1596192114262</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1596192114262</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,6 +243,7 @@
     <MESSAGE value="Modal" />
     <MESSAGE value="Send Email" />
     <MESSAGE value="Mission Complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mission Complete" />
+    <MESSAGE value="Validated Users" />
+    <option name="LAST_COMMIT_MESSAGE" value="Validated Users" />
   </component>
 </project>

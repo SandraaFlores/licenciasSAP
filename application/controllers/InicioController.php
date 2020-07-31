@@ -8,6 +8,7 @@ class InicioController extends CI_Controller
 		parent::__construct();
 		$this->load->model("UsuariosModel");
 		$this->load->library(array('form_validation','email','pagination', 'session'));
+		$this->load->helper(array('form', 'url', 'login/login_validation'));
 	}
 
 	public function index()
