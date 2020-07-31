@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d58c4e97-46ae-4f57-ae3e-c090b45ced96" name="Default Changelist" comment="" />
+    <list default="true" id="d58c4e97-46ae-4f57-ae3e-c090b45ced96" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/assets/js/dashboard/validation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/config/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/autoload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/usuariosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/usuariosController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/helpers/users/users_validation_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/helpers/users/users_validation_helper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/usuariosModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/usuariosModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/templates/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/templates/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/templates/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/templates/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/usuarios/actualizar.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/usuarios/actualizar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/usuarios/crear.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/usuarios/crear.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/usuarios/listar.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/usuarios/listar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/dashboard/correcto.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/dashboard/correcto.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +83,7 @@
     </option>
   </component>
   <component name="RunManager" selected="PHP Script.crear.php">
-    <configuration name="footer.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/CodeIgniter/application/views/templates/footer.php" useBuiltInWebServerPort="true">
+    <configuration name="footer.php" type="JavascriptDebugType" nameIsGenerated="true" uri="http://localhost:63342/CodeIgniter/application/views/templates/footer.php" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="welcome_message.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/CodeIgniter/application/views/welcome_message.php" useBuiltInWebServerPort="true">
@@ -80,7 +94,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.footer.php" />
         <item itemvalue="JavaScript Debug.welcome_message.php" />
       </list>
     </recent_temporary>
@@ -114,7 +127,13 @@
       <workItem from="1594398889032" duration="29270000" />
       <workItem from="1594491531070" duration="19390000" />
       <workItem from="1594839743048" duration="54000" />
-      <workItem from="1594839919840" duration="2106000" />
+      <workItem from="1594839919840" duration="2876000" />
+      <workItem from="1594885026189" duration="65000" />
+      <workItem from="1595201383245" duration="1201000" />
+      <workItem from="1595982150007" duration="16900000" />
+      <workItem from="1596090090748" duration="32545000" />
+      <workItem from="1596180981693" duration="5498000" />
+      <workItem from="1596188669983" duration="3359000" />
     </task>
     <task id="LOCAL-00001" summary="templates">
       <created>1593568167130</created>

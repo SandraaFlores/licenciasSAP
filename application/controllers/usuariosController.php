@@ -6,10 +6,10 @@ class UsuariosController extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->helper("url");
-		$this->load->model("UsuariosModel");
+		$this->load->model('UsuariosModel');
 		$this->load->library(array('form_validation', 'email', 'pagination', 'session'));
-		$this->load->helper("users/users_validation");
+		$this->load->helper(array('form', 'url', 'users/users_validation'));
+
 	}
 
 	public function index()
@@ -47,12 +47,19 @@ class UsuariosController extends CI_Controller
 			'departments_id' => $this->input->post('departments'),
 			'levels_id' => $this->input->post('levels')
 		);
-		if (empty($data)) {
-			$this->output->set_status_header(400);
+
+		$this->form_validation->set_rules(validationUser());
+
+		if ($this->form_validation->run() == FALSE) {
+			$this->nuevo();
 		} else {
-			$this->UsuariosModel->save($data);
-			$this->session->set_flashdata("success", true);
-			redirect('UsuariosController/nuevo');
+			if (empty($data)) {
+				$this->output->set_status_header(400);
+			} else {
+				$this->UsuariosModel->save($data);
+				$this->session->set_flashdata("success", true);
+				redirect('UsuariosController/nuevo');
+			}
 		}
 	}
 
@@ -89,16 +96,18 @@ class UsuariosController extends CI_Controller
 		$this->session->sess_destroy();
 		redirect('/login');
 	}
-
 	public function update($id = 0)
 	{
 		$this->load->view('templates/header');
 		$user = array('usuario' => $this->UsuariosModel->getUser($id)[0]);
 		$this->load->view('usuarios/actualizar', $user);
 		$this->load->view('templates/footer');
+
+
 	}
 
-	public function edit(){
+	public function edit()
+	{
 		$id2 = $this->input->post('id2');
 		$data = array(
 			'name' => $this->input->post('name'),
@@ -109,15 +118,25 @@ class UsuariosController extends CI_Controller
 			'role' => $this->input->post('role'),
 			'create_time' => date('Y-m-d H:i:s'),
 			'departments_id' => $this->input->post('departments'),
-			'levels_id' => 2
+			'levels_id' => $this->input->post('levels')
 		);
 
-		if (empty($data)) {
-			$this->output->set_status_header(400);
+		$this->form_validation->set_rules(validationUser());
+
+		if ($this->form_validation->run() == FALSE) {
+			$this->update($id2);
 		} else {
-			$this->UsuariosModel->edit($id2, $data);
-			redirect('UsuariosController/listar');
+			if (empty($data)) {
+				$this->output->set_status_header(400);
+			} else {
+				$this->UsuariosModel->edit($id2, $data);
+				redirect('UsuariosController/listar');
+
+
+			}
 		}
+
+
 	}
 
 }

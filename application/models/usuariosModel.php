@@ -22,7 +22,10 @@ class UsuariosModel extends CI_Model
 
 	public function ver()
 	{
-		$consulta = $this->db->query("SELECT u.id, u.name, u.first_name, u.last_name, d.name as departamento, u.role FROM users u INNER JOIN departments d ON (u.DEPARTMENTS_id = d.id);");
+		$consulta = $this->db->query("SELECT u.id, u.name, u.first_name, u.last_name, d.name as departamento, u.role, l.name as nivel
+									  FROM users u 
+									  INNER JOIN departments d ON (u.DEPARTMENTS_id = d.id)
+									  INNER JOIN levels l ON (u.LEVELS_id = l.id);");
 		return $consulta->result();
 	}
 

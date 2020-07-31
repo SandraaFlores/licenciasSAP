@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Solicitar Licencia</title>
+
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<link rel="stylesheet" href="<?= base_url('assets/libs/sweetalert2/dist/sweetalert2.min.css') ?>">
@@ -37,6 +37,15 @@
 						<a class="dropdown-item" href="<?= base_url('solicitudes/list') ?>">Solicitudes pendientes</a>
 						<a class="dropdown-item" href="<?= base_url('solicitudes/list/accepted') ?>">Solicitudes aceptadas</a>
 						<a class="dropdown-item" href="<?= base_url('solicitudes/list/cancel') ?>">Solicitudes canceladas</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown active">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Usuarios
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="<?= base_url('usuarios/new') ?>">Agregar usuarios</a>
+						<a class="dropdown-item" href="<?= base_url('usuarios/list') ?>">Ver usuarios</a>
 					</div>
 				</li>
 			<?php } ?>

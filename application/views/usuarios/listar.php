@@ -25,6 +25,7 @@
 					<th scope="col">Apellidos</th>
 					<th scope="col">Departamento</th>
 					<th scope="col">Función</th>
+					<th scope="col">Nivel de usuario</th>
 					<th scope="col">Acciones</th>
 				</tr>
 				</thead>
@@ -36,6 +37,7 @@
 						<td><?= $item->first_name." ".$item->last_name?></td>
 						<td><?= $item->departamento ?></td>
 						<td><?= $item->role ?></td>
+						<td><?= $item->nivel ?></td>
 						<td><a class="btn btn-success" href="<?= base_url('UsuariosController/update/'.$item->id)?>" id="edit" role="button"><i class="fa fa-edit"></i></a> <a
 								class="btn btn-danger btn-delete" href="#" data_id="<?= $item->id ?>" role="button"><i class="fa fa-trash-o"></i></a></td>
 					</tr>
