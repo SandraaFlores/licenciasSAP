@@ -24,15 +24,13 @@ class SolicitudModel extends CI_Model
 		}
 
 		$consulta = $this->db->query("SELECT r.id, u.name, u.first_name, u.last_name, r.create_time, r.status 
-										FROM requests r, approvals a, users  u
-										WHERE NOT (r.id IN (SELECT a2.REQUESTS_id FROM approvals a2 WHERE  a2.USERS_id = $user_id)) 
-										AND r.USERS_id = u.id 
-										AND r.status = 0 
-										GROUP BY r.id LIMIT " . $cantidad_pagina . " OFFSET " . $offset . ";");
+										FROM requests r, users  u
+										WHERE r.USERS_id = u.id 
+										AND r.status = 0;");
 		return $consulta->result();
 	}
 
-	public function showCancel($user_id, $page, $cantidad_pagina)
+	public function ver2($user_id, $page, $cantidad_pagina)
 	{
 		if ($page == 0) {
 			$offset = 0;
@@ -40,8 +38,12 @@ class SolicitudModel extends CI_Model
 			$offset = $page * $cantidad_pagina;
 		}
 
-		$consulta = $this->db->query("SELECT r.id, u.name, u.first_name, u.last_name, r.create_time , r.status FROM requests r, users  u
-										WHERE   r.USERS_id = u.id AND r.status = 2 LIMIT " . $cantidad_pagina . " OFFSET " . $offset . ";");
+		$consulta = $this->db->query("SELECT r.id, u.name, u.first_name, u.last_name, r.create_time, r.status 
+										FROM requests r, approvals a, users  u
+										WHERE NOT (r.id IN (SELECT a2.REQUESTS_id FROM approvals a2 WHERE  a2.USERS_id = $user_id)) 
+										AND r.USERS_id = u.id 
+										AND r.status = 0 
+										GROUP BY r.id LIMIT " . $cantidad_pagina . " OFFSET " . $offset . ";");
 		return $consulta->result();
 	}
 
@@ -58,6 +60,21 @@ class SolicitudModel extends CI_Model
 		return $consulta->result();
 	}
 
+	public function showCancel($user_id, $page, $cantidad_pagina)
+	{
+		if ($page == 0) {
+			$offset = 0;
+		} else {
+			$offset = $page * $cantidad_pagina;
+		}
+
+		$consulta = $this->db->query("SELECT r.id, u.name, u.first_name, u.last_name, r.create_time , r.status FROM requests r, users  u
+										WHERE   r.USERS_id = u.id AND r.status = 2 LIMIT " . $cantidad_pagina . " OFFSET " . $offset . ";");
+		return $consulta->result();
+	}
+
+
+
 	public function getUser($id)
 	{
 		$consulta = $this->db->query("SELECT * FROM requests WHERE id = $id ");
@@ -67,12 +84,19 @@ class SolicitudModel extends CI_Model
 
 	public function getApprovals($solicitudId)
 	{
-
 		$consulta = $this->db->query("SELECT u.name, u.first_name, u.last_name
 										FROM approvals a, users  u
 										WHERE  ($solicitudId = a.REQUESTS_id ) 
-										AND a.USERS_id = u.id  
-										GROUP BY u.LEVELS_id;");
+										AND a.USERS_id = u.id");
+		return $consulta->result();
+	}
+
+	public function getCanceled($solicitudId)
+	{
+		$consulta = $this->db->query("SELECT u.name, u.first_name, u.last_name
+										FROM  canceled_requests c, users  u
+										WHERE  ($solicitudId = c.REQUESTS_id ) 
+										AND c.USERS_id = u.id");
 		return $consulta->result();
 	}
 
@@ -93,13 +117,10 @@ class SolicitudModel extends CI_Model
 			case 2:
 				$consulta = $this->db->query("SELECT r.id FROM requests r, users  u
 										WHERE  r.USERS_id = u.id AND r.status = 2 GROUP BY r.id;");
-
 				break;
 		}
-
 		return sizeof($consulta->result());
 	}
-
 
 	public function aprobarSolicitud($data)
 	{
@@ -113,6 +134,10 @@ class SolicitudModel extends CI_Model
 		return $this->db->update('requests');
 	}
 
+	public function cancelarSolicitud($data){
+		$this->db->insert('canceled_requests', $data);
+	}
+
 	public function rechazarSolicitud($solicitudId)
 	{
 		$this->db->where('id', $solicitudId);
@@ -121,6 +146,5 @@ class SolicitudModel extends CI_Model
 	}
 
 
+
 }
-
-

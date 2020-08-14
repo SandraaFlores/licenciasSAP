@@ -3,7 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SolicitudController extends CI_Controller
 {
-	const PAGES =3;
+	const PAGES = 3;
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -47,8 +48,8 @@ class SolicitudController extends CI_Controller
 			'systems_id' => $this->input->post('system'),
 		);
 
-		$this->form_validation->set_rules('system','Sistema','required|callback_check_system');
-		$this->form_validation->set_rules('types_of_user','Tipo de usuario','required|callback_check_type');
+		$this->form_validation->set_rules('system', 'Sistema', 'required|callback_check_system');
+		$this->form_validation->set_rules('types_of_user', 'Tipo de usuario', 'required|callback_check_type');
 		$this->form_validation->set_rules(validationRequests());
 
 		if ($this->form_validation->run() == FALSE) {
@@ -68,21 +69,20 @@ class SolicitudController extends CI_Controller
 
 	public function check_system()
 	{
-		if ($this->input->post('system') === 'selectsystem')  {
+		if ($this->input->post('system') === 'selectsystem') {
 			$this->form_validation->set_message('check_system', 'El campo Sistema es obligatorio.');
 			return FALSE;
-		}
-		else {
+		} else {
 			return TRUE;
 		}
 	}
 
-	public function check_type(){
-		if ($this->input->post('types_of_user') === 'selecttype')  {
+	public function check_type()
+	{
+		if ($this->input->post('types_of_user') === 'selecttype') {
 			$this->form_validation->set_message('check_type', 'El campo Tipo de usuario es obligatorio.');
 			return FALSE;
-		}
-		else {
+		} else {
 			return TRUE;
 		}
 
@@ -114,32 +114,12 @@ class SolicitudController extends CI_Controller
 	public function listar($pagina_actual = 0)
 	{
 		$user_id = $this->session->userdata('user_data')['id'];
-		$registros_pagina = self::PAGES;
+		$registros_pagina = 10;
 		$data = array('solicitudes' => $this->SolicitudModel->ver($user_id, ($pagina_actual * 1), $registros_pagina),
-						"title" => "Lista de solicitudes pendientes");
+			'title' => "Lista de solicitudes pendientes", 'accion' => "Acciones");
 
-
-		$config = $this->getConfigPaginator($user_id, $registros_pagina, base_url('solicitudes/list'), $this->SolicitudModel->count_requests($user_id));
-		$this->pagination->initialize($config);
-
-		$this->load->view('templates/header');
-
-		foreach ($data['solicitudes'] as  $solicitud) {
-			$solicitud->approvals = $this->SolicitudModel->getApprovals($solicitud->id);
-		}
-
-		$this->load->view('solicitud/listar', $data);
-		$this->load->view('templates/footer');
-	}
-
-	public function listCancel($pagina_actual = 0)
-	{
-		$user_id = $this->session->userdata('user_data')['id'];
-		$registros_pagina = self::PAGES;
-		$data = array('solicitudes' => $this->SolicitudModel->showCancel($user_id, ($pagina_actual * 1), $registros_pagina), "title" => "Lista de solicitudes canceladas");
-
-
-		$config = $this->getConfigPaginator($user_id, $registros_pagina, base_url('solicitudes/list/cancel'), $this->SolicitudModel->count_requests($user_id, 2));
+		$config = $this->getConfigPaginator($user_id, $registros_pagina, base_url('solicitudes/list'),
+											$this->SolicitudModel->count_requests($user_id));
 		$this->pagination->initialize($config);
 
 		$this->load->view('templates/header');
@@ -154,10 +134,11 @@ class SolicitudController extends CI_Controller
 	{
 		$user_id = $this->session->userdata('user_data')['id'];
 		$registros_pagina = self::PAGES;
-		$data = array('solicitudes' => $this->SolicitudModel->showAccepted($user_id, ($pagina_actual * 1), $registros_pagina), "title" => "Lista de solicitudes aceptadas");
+		$data = array('solicitudes' => $this->SolicitudModel->showAccepted($user_id, ($pagina_actual * 1), $registros_pagina),
+			'title' => "Lista de solicitudes aceptadas",'accion' => "Aceptada por:");
 
-
-		$config = $this->getConfigPaginator($user_id, $registros_pagina, base_url('solicitudes/list/accepted'), $this->SolicitudModel->count_requests($user_id, 1));
+		$config = $this->getConfigPaginator($user_id, $registros_pagina, base_url('solicitudes/list/accepted'),
+			$this->SolicitudModel->count_requests($user_id, 1));
 		$this->pagination->initialize($config);
 
 		$this->load->view('templates/header');
@@ -168,13 +149,34 @@ class SolicitudController extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
+	public function listCancel($pagina_actual = 0)
+	{
+		$user_id = $this->session->userdata('user_data')['id'];
+		$registros_pagina = self::PAGES;
+		$data = array('solicitudes' => $this->SolicitudModel->showCancel($user_id, ($pagina_actual * 1), $registros_pagina),
+										"title" => "Lista de solicitudes canceladas","accion" => "Cancelada por:" );
+
+		$config = $this->getConfigPaginator($user_id, $registros_pagina, base_url('solicitudes/list/cancel'),
+											$this->SolicitudModel->count_requests($user_id, 2));
+		$this->pagination->initialize($config);
+
+		$this->load->view('templates/header');
+		foreach ($data['solicitudes'] as $solicitud) {
+			$solicitud->cenceled = $this->SolicitudModel->getCanceled($solicitud->id);
+		}
+		$this->load->view('solicitud/listar', $data);
+		$this->load->view('templates/footer');
+	}
+
 	public function accept($solicitudId)
 	{
 		$data = array('users_id' => $this->session->userdata('user_data')['id'], 'requests_id' => $solicitudId);
 		$this->SolicitudModel->aprobarSolicitud($data);
+
 		$approvals = $this->SolicitudModel->getApprovals($solicitudId);
+
 		echo sizeof($approvals);
-		if(sizeof($approvals) >= 3){
+		if (sizeof($approvals) >= 3) {
 			$this->SolicitudModel->aprobarSolicitudTodos($solicitudId);
 		}
 	}
@@ -182,6 +184,8 @@ class SolicitudController extends CI_Controller
 	public function cancel($solicitudId)
 	{
 		$data = array('users_id' => $this->session->userdata('user_data')['id'], 'requests_id' => $solicitudId);
+		$this->SolicitudModel->cancelarSolicitud($data);
+
 		$this->SolicitudModel->rechazarSolicitud($solicitudId);
 	}
 
@@ -209,17 +213,17 @@ class SolicitudController extends CI_Controller
 		$this->email->initialize($config);
 		$this->email->set_newline("\r\n");
 		$this->email->from('sandraa.flores.c@gmail.com', 'Sandra Flores');
-		$this->email->subject('Email Test');
+		$this->email->subject('Correo de prueba');
 		$vista = $this->load->view('solicitud/correo', '', true);
 		$this->email->message($vista);
 		$this->email->to('san.florees@gmail.com');
-		$this->email->cc('leojfl999@gmail.com');
+		//$this->email->cc('leojfl999@gmail.com');
 
 		if ($this->email->send()) {
 			echo "enviado<br/>";
 			echo $this->email->print_debugger(array('headers'));
 		} else {
-			echo "fallo <br/>";
+			echo "falló <br/>";
 			echo "error: " . $this->email->print_debugger(array('headers'));
 		}
 	}

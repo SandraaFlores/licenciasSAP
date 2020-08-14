@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `licencias`.`DEPARTMENTS` ;
 
 CREATE TABLE IF NOT EXISTS `licencias`.`DEPARTMENTS` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(255) NOT NULL,
+  `name` VARCHAR(500) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -34,7 +34,7 @@ DROP TABLE IF EXISTS `licencias`.`LEVELS` ;
 
 CREATE TABLE IF NOT EXISTS `licencias`.`LEVELS` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(255) NOT NULL,
+  `name` VARCHAR(500) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -81,7 +81,7 @@ DROP TABLE IF EXISTS `licencias`.`TYPES_OF_USERS` ;
 
 CREATE TABLE IF NOT EXISTS `licencias`.`TYPES_OF_USERS` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(255) NOT NULL,
+  `name` VARCHAR(500) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -93,20 +93,7 @@ DROP TABLE IF EXISTS `licencias`.`SYSTEMS` ;
 
 CREATE TABLE IF NOT EXISTS `licencias`.`SYSTEMS` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `licencias`.`APPROVALS`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `licencias`.`APPROVALS` ;
-
-CREATE TABLE IF NOT EXISTS `licencias`.`APPROVALS` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `status` INT NOT NULL,
-  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIME,
+  `name` VARCHAR(500) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -124,17 +111,15 @@ CREATE TABLE IF NOT EXISTS `licencias`.`REQUESTS` (
   `observation` VARCHAR(500) NULL,
   `status` INT NOT NULL,
   `release_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIME,
-  `user_copy` VARCHAR(255) NULL,
+  `user_copy` VARCHAR(500) NULL,
   `authorization` VARCHAR(500) NOT NULL,
   `USERS_id` INT NOT NULL,
   `TYPES_OF_USERS_id` INT NOT NULL,
   `SYSTEMS_id` INT NOT NULL,
-  `APPROVALS_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_REQUESTS_USERS1_idx` (`USERS_id` ASC),
   INDEX `fk_REQUESTS_TYPES_OF_USERS1_idx` (`TYPES_OF_USERS_id` ASC),
   INDEX `fk_REQUESTS_SYSTEMS1_idx` (`SYSTEMS_id` ASC),
-  INDEX `fk_REQUESTS_APPROVALS1_idx` (`APPROVALS_id` ASC),
   CONSTRAINT `fk_REQUESTS_USERS1`
     FOREIGN KEY (`USERS_id`)
     REFERENCES `licencias`.`USERS` (`id`)
@@ -149,10 +134,57 @@ CREATE TABLE IF NOT EXISTS `licencias`.`REQUESTS` (
     FOREIGN KEY (`SYSTEMS_id`)
     REFERENCES `licencias`.`SYSTEMS` (`id`)
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `licencias`.`APPROVALS`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `licencias`.`APPROVALS` ;
+
+CREATE TABLE IF NOT EXISTS `licencias`.`APPROVALS` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIME,
+  `USERS_id` INT NOT NULL,
+  `REQUESTS_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_APPROVALS_USERS1_idx` (`USERS_id` ASC),
+  INDEX `fk_APPROVALS_REQUESTS1_idx` (`REQUESTS_id` ASC),
+  CONSTRAINT `fk_APPROVALS_USERS1`
+    FOREIGN KEY (`USERS_id`)
+    REFERENCES `licencias`.`USERS` (`id`)
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_REQUESTS_APPROVALS1`
-    FOREIGN KEY (`APPROVALS_id`)
-    REFERENCES `licencias`.`APPROVALS` (`id`)
+  CONSTRAINT `fk_APPROVALS_REQUESTS1`
+    FOREIGN KEY (`REQUESTS_id`)
+    REFERENCES `licencias`.`REQUESTS` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `licencias`.`CANCELED_REQUESTS`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `licencias`.`CANCELED_REQUESTS` ;
+
+CREATE TABLE IF NOT EXISTS `licencias`.`CANCELED_REQUESTS` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `REQUESTS_id` INT NOT NULL,
+  `USERS_id` INT NOT NULL,
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIME,
+  PRIMARY KEY (`id`),
+  INDEX `fk_CANCELED_REQUESTS_REQUESTS1_idx` (`REQUESTS_id` ASC),
+  INDEX `fk_CANCELED_REQUESTS_USERS1_idx` (`USERS_id` ASC),
+  CONSTRAINT `fk_CANCELED_REQUESTS_REQUESTS1`
+    FOREIGN KEY (`REQUESTS_id`)
+    REFERENCES `licencias`.`REQUESTS` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_CANCELED_REQUESTS_USERS1`
+    FOREIGN KEY (`USERS_id`)
+    REFERENCES `licencias`.`USERS` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

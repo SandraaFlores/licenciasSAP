@@ -3,9 +3,13 @@ INSERT INTO `departments` (`id`, `name`) VALUES (NULL, 'Recursos Humanos');
 INSERT INTO `departments` (`id`, `name`) VALUES (NULL, 'Logística');
 INSERT INTO `departments` (`id`, `name`) VALUES (NULL, 'Ventas');
 INSERT INTO `departments` (`id`, `name`) VALUES (NULL, 'CEDIS');
+INSERT INTO `departments` (`id`, `name`) VALUES (NULL, 'Sistemas');
 
 INSERT INTO `levels` (`id`,`name`) VALUES (NULL, 'Administrador');
 INSERT INTO `levels` (`id`,`name`) VALUES (NULL, 'Usuario');
+INSERT INTO `levels` (`id`,`name`) VALUES (NULL, 'Gerente de sistemas');
+INSERT INTO `levels` (`id`,`name`) VALUES (NULL, 'Líder de proyectos Retail');
+INSERT INTO `levels` (`id`,`name`) VALUES (NULL, 'Consultor Basis');
 
 INSERT INTO `systems` (`id`, `name`) VALUES (NULL, 'SAP ECC');
 INSERT INTO `systems` (`id`, `name`) VALUES (NULL, 'SAP BW');

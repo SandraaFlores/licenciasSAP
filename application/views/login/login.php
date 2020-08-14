@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,48 +10,70 @@
 	<title>Iniciar Sesión</title>
 </head>
 
-<body>
+<body class="justify-content-center align-items-center"  style="background-color:#f2f2f2;">
+
 <div class="form-error">
 	<?php validation_errors(); ?>
 </div>
 <?php echo form_open('UsuariosController/verifica'); ?>
 <div class="container">
-	<div class="row pt-4">
+	<div class="abs-center">
 		<div class="col-sm-6 mx-auto">
-			<div class="card">
-				<div class="card-header align-center">
-					<h5>
-						Inicia sesión en <b class="main-text blue-text">AVANTE</b>
-					</h5>
-				</div>
-				<div class="card-body" style="padding: 10px">
-					<form class="needs-validation" method="post"
-						  action="<?= base_url("UsuariosController/verifica"); ?>" novalidate>
-						<div class="form-group row mx-0">
-							<label class="col-lg-3 col-form-label form-control-label" for="user">Usuario:</label>
-							<input type="text"
-								   class="form-control col-lg-6 <?php echo empty(form_error('user')) ? "" : "is-invalid"; ?>"
-								   value="<?php echo set_value('user'); ?>"
-								   placeholder="Usuario" id="user" name='user'
-								   autofocus>
-							<div class="invalid-feedback"><?php echo form_error('user'); ?></div>
-						</div>
+			<div class="card shadow">
+				<div class="card">
+					<div class="card-header align-center">
+						<h5>
+							Inicia sesión en <b class="main-text blue-text">AVANTE</b>
+						</h5>
+					</div>
 
-						<div class="form-group row mx-0">
-							<label class="col-lg-3 col-form-label form-control-label" for="password">Contraseña:</label>
-							<input type="password"
-								   class="form-control col-lg-6 <?php echo empty(form_error('password')) ? "" : "is-invalid"; ?>"
-								   placeholder="Contraseña"
-								   name="password" value="<?php echo set_value('password'); ?>">
-							<div class="invalid-feedback"><?php echo form_error('password'); ?></div>
-						</div>
-						<div class="button form-group">
-							<div class="center">
-								<button type="submit" class="btn btn-info btn-small btn-responsive" id="aceptar">Aceptar
-								</button>
+					<div class="card-body">
+						<form class="needs-validation" method="post"
+							  action="<?= base_url("UsuariosController/verifica"); ?>" novalidate>
+							<!--<div class="col-sm-12 align-center">
+								<img src="assets/images/user.png" width="50%" height="50%" >
+							</div>-->
+							<div class="form-group row mx-0">
+								<div class="col-lg-4 center">
+									<!--<label class="col-form-label form-control-label" for="user">Usuario:</label>-->
+									<h5>Usuario: </h5>
+								</div>
+
+								<div class="col-lg-7">
+									<input type="text"
+										   class="form-control <?php echo empty(form_error('user')) ? "" : "is-invalid"; ?>"
+										   value="<?php echo set_value('user'); ?>"
+										   placeholder="Usuario" id="user" name='user'
+										   autofocus>
+									<div class="invalid-feedback"><?php echo form_error('user'); ?></div>
+								</div>
+
 							</div>
-						</div>
-					</form>
+
+							<div class="form-group row mx-0">
+								<div class="col-lg-4 center">
+									<!--<label class="col-lg-3 col-form-label form-control-label"
+									   for="password">Contraseña:</label>-->
+									<h5>Contraseña: </h5>
+								</div>
+								<div class="col-lg-7">
+									<input type="password"
+										   class="form-control <?php echo empty(form_error('password')) ? "" : "is-invalid"; ?>"
+										   placeholder="Contraseña"
+										   name="password" value="<?php echo set_value('password'); ?>">
+									<div class="invalid-feedback"><?php echo form_error('password'); ?></div>
+								</div>
+							</div>
+							<br>
+							<div class="button form-group">
+								<div class="center">
+									<button type="submit" class="btn btn-info btn-small btn-responsive" id="aceptar">
+										Ingresar
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>

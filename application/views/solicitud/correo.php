@@ -127,92 +127,141 @@
 <table width="100%" bgcolor="#f6f8f1" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td>
-			<!--[if (gte mso 9)|(IE)]>
 			<table width="600" align="center" cellpadding="0" cellspacing="0" border="0">
 				<tr>
 					<td>
-			<![endif]-->
-			<table bgcolor="#ffffff" class="content" align="center" cellpadding="0" cellspacing="0" border="0">
-				<tr>
-					<td bgcolor="#c7d8a7" class="header">
-						<table width="70" align="left" border="0" cellpadding="0" cellspacing="0">
+						<table bgcolor="#ffffff" class="content" align="center" cellpadding="0" cellspacing="0"
+							   border="0">
 							<tr>
-								<td height="70" style="padding: 0 20px 20px 0;">
-									<img class="fix" src="<?= base_url('assets/images/icon.gif') ?>" width="70"
-										 height="70" border="0" alt=""/>
-								</td>
-							</tr>
-						</table>
-						<!--[if (gte mso 9)|(IE)]>
-						<table width="425" align="left" cellpadding="0" cellspacing="0" border="0">
-							<tr>
-								<td>
-						<![endif]-->
-						<table class="col425" align="left" border="0" cellpadding="0" cellspacing="0"
-							   style="width: 100%; max-width: 425px;">
-							<tr>
-								<td height="70">
-									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<td bgcolor="#c7d8a7" class="header">
+									<table width="70" align="left" border="0" cellpadding="0" cellspacing="0">
 										<tr>
-											<td class="h1" style="padding: 5px 0 0 0;">
-												Solicitudes SAP
+											<td height="70" style="padding: 0 20px 20px 0;">
+												<img class="fix"
+													 src="https://lh3.googleusercontent.com/001xrGoRUugGU8B84ZIwj0hGjzxL3bW84phy_ZzESQ4A0iY6Zqn7NmpRFRMbVr00_CwcFA=s70"
+													 width="70"
+													 height="70" border="0" alt=""/>
+											</td>
+										</tr>
+									</table>
+									<table width="425" align="left" cellpadding="0" cellspacing="0" border="0">
+										<tr>
+											<td>
+												<table class="col425" align="left" border="0" cellpadding="0"
+													   cellspacing="0"
+													   style="width: 100%; max-width: 425px;">
+													<tr>
+														<td height="70">
+															<table width="100%" border="0" cellspacing="0"
+																   cellpadding="0">
+																<tr>
+																	<td class="h1" style="padding: 5px 0 0 0;">
+																		Solicitudes SAP
+																	</td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table>
 											</td>
 										</tr>
 									</table>
 								</td>
 							</tr>
-						</table>
-						<!--[if (gte mso 9)|(IE)]>
-						</td>
-						</tr>
-						</table>
-						<![endif]-->
-					</td>
-				</tr>
-				<tr>
-					<td class="innerpadding borderbottom">
-						<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							<tr>
-								<td class="h2">
-									Usted tiene una solicitud pendiente.
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td class="innerpadding borderbottom">
-						<table width="115" align="left" border="0" cellpadding="0" cellspacing="0">
-							<tr>
-								<td height="115" style="padding: 0 20px 20px 0;">
-									<img class="fix" src="<?= base_url('assets/images/avanteSinFondo.png') ?>"
-										 width="115" height="115" border="0" alt=""/>
-								</td>
-							</tr>
-						</table>
-						<!--[if (gte mso 9)|(IE)]>
-						<table width="380" align="left" cellpadding="0" cellspacing="0" border="0">
-							<tr>
-								<td>
-						<![endif]-->
-						<table class="col380" align="left" border="0" cellpadding="0" cellspacing="0"
-							   style="width: 100%; max-width: 380px;">
-							<tr>
-								<td>
+								<td class="innerpadding borderbottom">
 									<table width="100%" border="0" cellspacing="0" cellpadding="0">
 										<tr>
-											<td class="bodycopy">
-												Ingrese al sistema para ver sus nuevas solicitudes.
+											<td class="h2">
+												Usted tiene una solicitud pendiente.
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td class="innerpadding borderbottom">
+									<table width="115" align="left" border="0" cellpadding="0" cellspacing="0">
+										<tr>
+											<td height="115" style="padding: 0 20px 20px 0;">
+												<img class="fix"
+													 src="https://media-exp1.licdn.com/dms/image/C4E0BAQHFhL0yJR2u_g/company-logo_200_200/0?e=2159024400&v=beta&t=rag6b8XE6piSVBsv9MhG7KYsCqd6PIizty9g2osJnMc"
+													 width="115" height="115" border="0" alt=""/>
+											</td>
+										</tr>
+									</table>
+									<table width="380" align="left" cellpadding="0" cellspacing="0" border="0">
+										<tr>
+											<td>
+												<table class="col380" align="left" border="0" cellpadding="0"
+													   cellspacing="0"
+													   style="width: 100%; max-width: 380px;">
+													<tr>
+														<td>
+															<table width="100%" border="0" cellspacing="0"
+																   cellpadding="0">
+																<tr>
+																	<td class="bodycopy">
+																		Ingrese al sistema para ver sus nuevas
+																		solicitudes.
+																	</td>
+																</tr>
+																<tr>
+																	<td style="padding: 20px 0 0 0;">
+																		<table class="buttonwrapper" bgcolor="#FF2D00"
+																			   border="0"
+																			   cellspacing="0" cellpadding="0">
+																			<tr>
+																				<td class="button " height="45">
+																					<i class="fa fa-sign-in"></i><a
+																						href="<?= base_url('login') ?>">
+																						Ingresar</a>
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td class="innerpadding borderbottom">
+									<img class="fix"
+										 src="https://lh3.googleusercontent.com/proxy/tKXL4An45Js4hMUexmtrq_OBYr4MqEqb3SwhsOayJll6rJtbD3CQXIBML6F2mi7jCEP2yhGGcOtHMTEfoZpG8nUjn5fitlodiyo_FV_YUbdd"
+										 width="100%" border="0"
+										 alt=""/>
+								</td>
+							</tr>
+							<tr>
+								<td class="footer" bgcolor="#44525f">
+									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td align="center" class="footercopy">
+												<div class="footer-copyright text-center py-3">© 2016 Avante Textiles SA
+													de CV, All
+													rights reserved.
+													<a href="https://avantetextil.com/">avantetextil.com</a>
+												</div>
 											</td>
 										</tr>
 										<tr>
-											<td style="padding: 20px 0 0 0;">
-												<table class="buttonwrapper" bgcolor="#FF2D00" border="0"
-													   cellspacing="0" cellpadding="0">
+											<td align="center" style="padding: 20px 0 0 0;">
+												<table border="0" cellspacing="0" cellpadding="0">
 													<tr>
-														<td class="button " height="45">
-															<i class="fa fa-sign-in"></i><a
-																href="<?= base_url('login') ?>"> Ingresar</a>
+														<td width="37"
+															style="text-align: center; padding: 0 10px 0 10px;">
+															<a href="https://www.facebook.com/AvanteTextil.Oficial">
+																<img
+																	src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512"
+																	width="37"
+																	height="37" alt="Facebook" border="0"/>
+															</a>
 														</td>
 													</tr>
 												</table>
@@ -222,59 +271,9 @@
 								</td>
 							</tr>
 						</table>
-						<!--[if (gte mso 9)|(IE)]>
-						</td>
-						</tr>
-						</table>
-						<![endif]-->
-					</td>
-				</tr>
-				<tr>
-					<td class="innerpadding borderbottom">
-						<img class="fix" src="<?= base_url('assets/images/cotton.jpg') ?>" width="100%" border="0"
-							 alt=""/>
-					</td>
-				</tr>
-				<tr>
-					<td class="footer" bgcolor="#44525f">
-						<table width="100%" border="0" cellspacing="0" cellpadding="0">
-							<tr>
-								<td align="center" class="footercopy">
-									<div class="footer-copyright text-center py-3">© 2016 Avante Textiles SA de CV, All
-										rights reserved.
-										<a href="https://mdbootstrap.com/">avantetextil.com</a>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td align="center" style="padding: 20px 0 0 0;">
-									<table border="0" cellspacing="0" cellpadding="0">
-										<tr>
-											<td width="37" style="text-align: center; padding: 0 10px 0 10px;">
-												<a href="https://www.facebook.com/AvanteTextil.Oficial">
-													<img src="<?= base_url('assets/images/facebook.png') ?>" width="37"
-														 height="37" alt="Facebook" border="0"/>
-												</a>
-											</td>
-											<td width="37" style="text-align: center; padding: 0 10px 0 10px;">
-												<a href="http://www.twitter.com/">
-													<img src="<?= base_url('assets/images/twitter.png') ?>" width="37"
-														 height="37" alt="Twitter" border="0"/>
-												</a>
-											</td>
-										</tr>
-									</table>
-								</td>
-							</tr>
-						</table>
 					</td>
 				</tr>
 			</table>
-			<!--[if (gte mso 9)|(IE)]>
-			</td>
-			</tr>
-			</table>
-			<![endif]-->
 		</td>
 	</tr>
 </table>

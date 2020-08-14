@@ -34,7 +34,7 @@
 <div class="container">
 	<div class="row pt-4">
 		<div class="col-sm-12 mx-auto">
-			<h5 class="text-center"><?php echo $title?></h5>
+			<h5 class="text-center"><?php echo $title ?></h5>
 			<table class="table table-bordered wy-table-responsive w-100">
 				<thead>
 				<tr>
@@ -42,7 +42,7 @@
 					<th scope="col">Solicitado por:</th>
 					<th scope="col">Fecha y hora</th>
 					<th scope="col">Mostrar</th>
-					<th scope="col">Acciones</th>
+					<th scope="col"><?php echo $accion ?></th>
 				</tr>
 				</thead>
 				<tbody>
@@ -54,14 +54,23 @@
 						<td><a class="btn btn-warning btn-show"
 							   href="<?= base_url('SolicitudController/show/' . $item->id) ?>" role="button"><i
 									class="fa fa-eye"></i></a>
-						<td>	<?php if ($item->status == 0){ ?>
-						<a class="btn btn-success btn-acept"
-							   href="<?= base_url('SolicitudController/accept/' . $item->id) ?>" role="button"><i
-									class="fa fa-check"></i></a>
-							<a class="btn btn-danger btn-cancel"
-							   href="<?= base_url('SolicitudController/cancel/' . $item->id) ?>" role="button"><i
-									class="fa fa-times"></i></a>
-						<?php } ?></td>
+						<td>    <?php if ($item->status == 0) { ?>
+								<a class="btn btn-success btn-accept"
+								   href="<?= base_url('SolicitudController/accept/' . $item->id) ?>" role="button"><i
+										class="fa fa-check"></i></a>
+								<a class="btn btn-danger btn-cancel"
+								   href="<?= base_url('SolicitudController/cancel/' . $item->id) ?>" role="button"><i
+										class="fa fa-times"></i></a>
+							<?php } elseif ($item->status == 1) { ?>
+								<?php foreach ($item->approvals as $val): ?>
+									<?= $val->name . " " . $val->first_name . " " . $val->last_name ."<br />" ?>
+								<?php endforeach; ?>
+							<?php } elseif ($item->status == 2) { ?>
+								<?php foreach ($item->cenceled as $val): ?>
+									<?= $val->name . " " . $val->first_name . " " . $val->last_name ?>
+								<?php endforeach; ?>
+							<?php } ?>
+						</td>
 					</tr>
 				<?php endforeach; ?>
 				</tbody>

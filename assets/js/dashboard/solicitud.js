@@ -1,12 +1,11 @@
 (function () {
-	$(".btn-acept, .btn-cancel").click(function (ev) {
+	$(".btn-accept, .btn-cancel").click(function (ev) {
 		ev.preventDefault();
 		var url = $(this).attr('href');
 		var self = this;
 		var message = 'Se aceptará la solicitud';
-		if($(this).hasClass('.btn-cancel')){
+		if($(this).hasClass('btn-cancel')){
 			message = 'Se rechazará la solicitud';
-
 		}
 		Swal.fire({
 			title: message,

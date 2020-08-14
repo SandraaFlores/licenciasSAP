@@ -50,93 +50,108 @@ $conexion = mysqli_connect('localhost', 'root', '', 'licencias');
 								   name="id2">
 							<label class="col-lg-2 col-form-label form-control-label" for="name">Nombre(s) del
 								solicitante:</label>
-							<input type="text"
-								   name="name"
-								   class="form-control col-lg-3 <?php echo empty(form_error('name')) ? "" : "is-invalid"; ?>"
-								   placeholder="Nombre(s) del solicitante"
-								   id="name"
-								   value="<?= set_value('name', isset($usuario->name[0]) ? $usuario->name : '') ?>"
-								   autofocus>
-							<span class="invalid-feedback"><?php echo form_error('name'); ?></span>
+							<div class="col-lg-3 p-0">
+								<input type="text"
+									   name="name"
+									   class="form-control <?php echo empty(form_error('name')) ? "" : "is-invalid"; ?>"
+									   placeholder="Nombre(s) del solicitante"
+									   id="name"
+									   value="<?= set_value('name', isset($usuario->name[0]) ? $usuario->name : '') ?>"
+									   autofocus>
+								<div class="invalid-feedback"><?php echo form_error('name'); ?></div>
+							</div>
 
 							<label class="col-lg-2 col-form-label form-control-label" for="first_name">Primer
 								apellido:</label>
-							<input type="text" name="first_name"
-								   class="form-control col-lg-3 <?php echo empty(form_error('first_name')) ? "" : "is-invalid"; ?>"
-								   placeholder="Primer apellido"
-								   id="first_name"
-								   value="<?= set_value('first_name', isset($usuario->first_name[0]) ? $usuario->first_name : '') ?>">
-							<div class="invalid-feedback"><?php echo form_error('first_name'); ?></div>
+							<div class="col-lg-3 p-0">
+								<input type="text" name="first_name"
+									   class="form-control <?php echo empty(form_error('first_name')) ? "" : "is-invalid"; ?>"
+									   placeholder="Primer apellido"
+									   id="first_name"
+									   value="<?= set_value('first_name', isset($usuario->first_name[0]) ? $usuario->first_name : '') ?>">
+								<div class="invalid-feedback"><?php echo form_error('first_name'); ?></div>
+							</div>
 						</div>
 
 						<div class="form-group row mx-0">
 							<label class="col-lg-2 col-form-label form-control-label" for="last_name">Segundo
 								apellido:</label>
-							<input type="text" name="last_name"
-								   class="form-control col-lg-3 <?php echo empty(form_error('last_name')) ? "" : "is-invalid"; ?>"
-								   placeholder="Segundo apellido"
-								   id="last_name"
-								   value="<?= set_value('last_name', isset($usuario->last_name[0]) ? $usuario->last_name : '') ?>">
-							<div class="invalid-feedback"><?php echo form_error('last_name'); ?></div>
+							<div class="col-lg-3 p-0">
+								<input type="text" name="last_name"
+									   class="form-control <?php echo empty(form_error('last_name')) ? "" : "is-invalid"; ?>"
+									   placeholder="Segundo apellido"
+									   id="last_name"
+									   value="<?= set_value('last_name', isset($usuario->last_name[0]) ? $usuario->last_name : '') ?>">
+								<div class="invalid-feedback"><?php echo form_error('last_name'); ?></div>
+							</div>
 
 							<label class="col-lg-2 col-form-label form-control-label" for="user">Usuario:</label>
-							<input type="text" name="user"
-								   class="form-control col-lg-3 <?php echo empty(form_error('user')) ? "" : "is-invalid"; ?>"
-								   placeholder="Usuario para ingresar" id="user"
-								   value="<?= set_value('user', isset($usuario->user[0]) ? $usuario->user : '') ?>">
-							<div class="invalid-feedback"><?php echo form_error('user'); ?></div>
-
+							<div class="col-lg-3 p-0">
+								<input type="text" name="user"
+									   class="form-control <?php echo empty(form_error('user')) ? "" : "is-invalid"; ?>"
+									   placeholder="Usuario para ingresar" id="user"
+									   value="<?= set_value('user', isset($usuario->user[0]) ? $usuario->user : '') ?>">
+								<div class="invalid-feedback"><?php echo form_error('user'); ?></div>
+							</div>
 						</div>
 						<div class="form-group row mx-0">
 							<label class="col-lg-2 col-form-label form-control-label" for="password">Contraseña:</label>
-							<input type="password" name="password"
-								   class="form-control col-lg-3 <?php echo empty(form_error('password')) ? "" : "is-invalid"; ?>"
-								   placeholder="Contraseña" id="password">
-							<div class="invalid-feedback"><?php echo form_error('password'); ?></div>
+							<div class="col-lg-3 p-0">
+								<input type="password" name="password"
+									   class="form-control <?php echo empty(form_error('password')) ? "" : "is-invalid"; ?>"
+									   placeholder="Contraseña" id="password">
+								<div class="invalid-feedback"><?php echo form_error('password'); ?></div>
+							</div>
 
 							<label class="col-lg-2 col-form-label form-control-label"
 								   for="departments">Departamento:</label>
-							<select id="departments" name="departments"
-									class="form-control col-lg-3 <?php echo empty(form_error('departments')) ? "" : "is-invalid"; ?>">
-								<option value="selectdepartment2">Seleccione una opción:</option>
-								<?php
-								$sql = "SELECT * FROM departments";
-								$query = $conexion->query($sql);
-								while ($valores = mysqli_fetch_array($query)) {
-									$txt = ($usuario->DEPARTMENTS_id == $valores['id']) ? " selected" : " "; ?>
-									<option <?php echo $txt; ?>
-										value="<?php echo $valores['id']; ?>" <?php echo set_select('departments', $valores['id'], False); ?> ><?php echo $valores['name']; ?> </option>
-								<?php } ?>
-							</select>
-							<div class="invalid-feedback"><?php echo form_error('departments'); ?></div>
+							<div class="col-lg-3 p-0">
+								<select id="departments" name="departments"
+										class="form-control <?php echo empty(form_error('departments')) ? "" : "is-invalid"; ?>">
+									<option value="selectdepartment2">Seleccione una opción:</option>
+									<?php
+									$sql = "SELECT * FROM departments";
+									$query = $conexion->query($sql);
+									while ($valores = mysqli_fetch_array($query)) {
+										$txt = ($usuario->DEPARTMENTS_id == $valores['id']) ? " selected" : " "; ?>
+										<option <?php echo $txt; ?>
+											value="<?php echo $valores['id']; ?>" <?php echo set_select('departments', $valores['id'], False); ?> ><?php echo $valores['name']; ?> </option>
+									<?php } ?>
+								</select>
+								<div class="invalid-feedback"><?php echo form_error('departments'); ?></div>
+							</div>
 						</div>
+
 						<div class="form-group row mx-0">
 							<label class="col-lg-2 col-form-label form-control-label" for="role">Función del
 								usuario:</label>
-							<input type="text"
-								   class="form-control col-lg-3 <?php echo empty(form_error('role')) ? "" : "is-invalid"; ?>"
-								   name="role"
-								   placeholder="Función del usuario" id="role"
-								   value="<?= set_value('role', isset($usuario->role[0]) ? $usuario->role : '') ?>">
-							<div class="invalid-feedback"><?php echo form_error('role'); ?></div>
+							<div class="col-lg-3 p-0">
+								<input type="text"
+									   class="form-control <?php echo empty(form_error('role')) ? "" : "is-invalid"; ?>"
+									   name="role"
+									   placeholder="Función del usuario" id="role"
+									   value="<?= set_value('role', isset($usuario->role[0]) ? $usuario->role : '') ?>">
+								<div class="invalid-feedback"><?php echo form_error('role'); ?></div>
+							</div>
 
 							<label class="col-lg-2 col-form-label form-control-label"
 								   for="levels">Nivel de usuario:</label>
-							<select id="levels" name="levels"
-									class="form-control col-lg-3 <?php echo empty(form_error('levels')) ? "" : "is-invalid"; ?>">
-								<option value="selectlevel2">Seleccione una opción:</option>
-								<?php
-								$sql = "SELECT * FROM levels";
-								$query = $conexion->query($sql);
-								while ($valores = mysqli_fetch_array($query)) {
-									$txt = ($usuario->LEVELS_id == $valores['id']) ? " selected" : " "; ?>
-									<option <?php echo $txt; ?>
-										value="<?php echo $valores['id']; ?>" <?php echo set_select('departments', $valores['id'], False); ?> ><?php echo $valores['name']; ?> </option>
-								<?php } ?>
-							</select>
-							<div class="invalid-feedback"><?php echo form_error('levels'); ?></div>
+							<div class="col-lg-3 p-0">
+								<select id="levels" name="levels"
+										class="form-control <?php echo empty(form_error('levels')) ? "" : "is-invalid"; ?>">
+									<option value="selectlevel2">Seleccione una opción:</option>
+									<?php
+									$sql = "SELECT * FROM levels";
+									$query = $conexion->query($sql);
+									while ($valores = mysqli_fetch_array($query)) {
+										$txt = ($usuario->LEVELS_id == $valores['id']) ? " selected" : " "; ?>
+										<option <?php echo $txt; ?>
+											value="<?php echo $valores['id']; ?>" <?php echo set_select('departments', $valores['id'], False); ?> ><?php echo $valores['name']; ?> </option>
+									<?php } ?>
+								</select>
+								<div class="invalid-feedback"><?php echo form_error('levels'); ?></div>
+							</div>
 						</div>
-
 						<div class="button form-group">
 							<div class="center">
 								<button type="submit" class="btn btn-primary btn-responsive" name=""
